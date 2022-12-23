@@ -1,4 +1,4 @@
-function print(report, data) {
+function print(data) {
   const months = [
     "Januari",
     "Februari",
@@ -39,45 +39,38 @@ function print(report, data) {
                       <th>No</th>
                       <th>ID</th>
                       <th>Tanggal</th>
-                      <th>Pelanggan</th>
+                      <th>Nama</th>
+                      <th>Pesanan</th>
                       <th>Total Harga</th>
-                      <th>Bayar</th>
-                      <th>Kembali</th>
                     </tr>
                   </thead>
                   <tbody>          
       `
   );
 
-  console.log(data);
-
-  report.forEach((e, i) => {
+  data.forEach((e, i) => {
     printWindow.document.write(
       `
-      <tr>
-        <td>` +
+            <tr>
+                <td>` +
         (i + 1) +
         `</td>
-        <td>` +
-        e +
+                <td>` +
+        e.id +
         `</td>
-        <td>` +
-        data[e].date +
+                <td>` +
+        e.tgl +
         `</td>
-        <td>` +
-        data[e].customer +
+                <td>` +
+        e.name +
         `</td>
-        <td>` +
-        data[e].total +
+                <td>` +
+        e.order +
         `</td>
-        <td>` +
-        data[e].pay +
+                <td>` +
+        e.price +
         `</td>
-        <td>` +
-        data[e].charge +
-        `</td>
-      </tr>
-
+              </tr>
       `
     );
   });
@@ -115,8 +108,8 @@ function print(report, data) {
                     table, th, td {
                         border:1px solid;
                         border-collapse:collapse;
-                        padding:0.3em;
-                        text-align: center;
+                        padding:0.2em;
+                        padding-inline: 1.6em;
                     }
                     body {
                         align-self:center;
