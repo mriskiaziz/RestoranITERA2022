@@ -29,7 +29,7 @@ function AdminLayout() {
     Tokens();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
-  });
+  }, []);
 
   async function Tokens() {
     if (window.localStorage.getItem("restoran_token")) {

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Row, Table, Button } from "react-bootstrap";
 import { AiFillFileText } from "react-icons/ai";
 import { uangRupiah } from "../../page/currency";
+import print from "./print";
 
 export class LaporanAdmin extends Component {
   constructor() {
@@ -32,10 +33,6 @@ export class LaporanAdmin extends Component {
     }
   }
 
-  print() {
-    window.print();
-  }
-
   componentDidMount() {
     this.callAPI();
   }
@@ -51,7 +48,8 @@ export class LaporanAdmin extends Component {
             <Button
               variant="danger"
               className=" d-flex align-items-center py-2 px-3"
-              onClick={this.print}
+              target="_blank"
+              onClick={() => print(this.state.report, this.state.reportData)}
             >
               <AiFillFileText className="fs-4 me-2" />
               Cetak
