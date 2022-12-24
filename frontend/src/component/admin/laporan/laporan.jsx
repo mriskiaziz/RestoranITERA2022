@@ -9,24 +9,26 @@ export class LaporanAdmin extends Component {
     super();
     this.state = {
       report: [],
-      reportData: {}
-    }
+      reportData: {},
+    };
   }
 
   async callAPI() {
     try {
-      await axios.get(process.env.REACT_APP_BACKEND_URL+"/report").then((res) => {
-        console.log(res.data);
-        this.setState({ reportData: res.data.report});
-        this.setState({ report: Object.keys(res.data.report) });
-      });
+      await axios
+        .get(process.env.REACT_APP_BACKEND_URL + "/report")
+        .then((res) => {
+          console.log(res.data);
+          this.setState({ reportData: res.data.report });
+          this.setState({ report: Object.keys(res.data.report) });
+        });
     } catch (error) {
       if (error.code === "ERR_NETWORK") {
         alert("Terjadi kesalahan server. Silahkan refresh kembali!");
       } else if (error.code === "ERR_BAD_REQUEST") {
         alert(error.response.data.status);
         document.location.reload();
-      }      
+      }
     }
   }
 
